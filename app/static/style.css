@@ -1,0 +1,219 @@
+.pagination {
+
+    width: 580px;
+    height: 0; /* Важно! Фиксированная высота */
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Главное: это выравнивает по центру по вертикали */
+    box-sizing: border-box;
+    margin-top: 2rem;
+}
+
+/* Фиксированная ширина слева и справа */
+.pagination-left,
+.pagination-right {
+    width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+/* Общий стиль для всех .page-num */
+.page-num {
+    padding: 0px 6px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background 0.2s ease;
+    font-size: 14px;
+    min-width: 30px;
+    text-align: center;
+    display: inline-block;
+}
+
+/* Конкретные модификаторы */
+.page-num {
+    background: #f4f4f4;
+    color: #333;
+    border: 1px solid #ddd;
+}
+
+.page-num:hover {
+    background: #e0e0e0;
+}
+
+.page-num.active {
+    background: #333;
+    color: white;
+    border: 1px solid #333;
+    cursor: default;
+}
+
+.page-num.dots {
+    background: none;
+    border: none;
+    color: #888;
+    cursor: default;
+}
+
+/* Prev / Next */
+.nav-button {
+    padding: 4px 8px;
+    border-radius: 6px;
+    background: #f4f4f4;
+    color: #333;
+    border: 1px solid #ddd;
+    text-decoration: none;
+    height: 40px;  /* высота кнопки */
+    display: flex;               /* центрирование */
+    align-items: center;
+    justify-content: center;}
+
+.nav-button:hover {
+    background: #e0e0e0;
+}
+
+.nav-button.disabled {
+    background: #f9f9f9;
+    color: #aaa;
+    border: 1px solid #eee;
+    pointer-events: none;
+}
+
+.pagination-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 100px; /* ← задай нужную высоту */
+    width: 100%;
+    padding: 12px 0;
+    background: white;
+    border-top: 1px solid #ddd;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+body {
+    font-family: sans-serif;
+    padding: 2rem;
+    max-width: 900px;
+    margin: auto;
+}
+
+.publication {
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+}
+
+.tags {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 0.3rem;
+}
+
+.meta {
+    font-size: 0.9rem;
+    color: #888;
+}
+
+form#arxiv-form {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+form#arxiv-form input[type="number"],
+form#arxiv-form button {
+    padding: 6px 12px;         /* одинаковый padding */
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 14px;           /* одинаковый шрифт */
+    height: 30px;              /* фиксированная одинаковая высота */
+    box-sizing: border-box;   /* важно для padding + height */
+}
+
+form#arxiv-form input[type="number"] {
+    width: 60px;               /* или как тебе нужно */
+    border: 1px solid #ccc;
+}
+
+form#arxiv-form button {
+    background: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+
+form#arxiv-form button:hover {
+    background: #444;
+}
+
+
+.per-page-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    font-size: 14px;
+    color: #333;
+
+}
+
+.per-page-form label {
+    font-weight: 500;
+}
+
+.per-page-form select {
+    padding: 4px 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    background: white;
+    font-size: 14px;
+    appearance: none; /* убирает системный стиль */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+}
+.per-page-form {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    font-size: 14px;
+}
+
+.select-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    cursor: pointer;
+    background: #fff;
+    transition: box-shadow 0.2s ease;
+}
+
+.select-wrapper:hover {
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+}
+
+.select-wrapper select {
+    border: none;
+    background: transparent;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 4px;
+}
+
+.select-wrapper select:focus {
+    outline: none;
+}
+

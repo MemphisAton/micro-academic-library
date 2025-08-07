@@ -1,0 +1,81 @@
+# test
+*[0-9].py
+*[Tt][Ee][Ss][Tt]*
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.log
+
+# venv
+venv/
+env/
+.venv/
+ENV/
+.env
+.env.*
+
+# Jupyter
+.ipynb_checkpoints/
+
+# PyInstaller / Nuitka
+*.spec
+build/
+dist/
+*.exe
+
+# Excel / Word / PowerPoint kesh
+~$*.xls
+~$*.xlsx
+~$*.xlsm
+~$*.doc
+~$*.docx
+~$*.ppt
+~$*.pptx
+
+# Excel / Word / PowerPoint / CSV
+*.xls
+*.xlsx
+*.xlsm
+*.doc
+*.docx
+*.ppt
+*.pptx
+*.csv
+
+# logs
+*.bak
+*.tmp
+*.swp
+.cache/
+*.lock
+
+# IDE
+.vscode/
+.idea/
+*.iml
+
+# Selenium
+screenshots/
+geckodriver.log
+chromedriver.log
+
+# PyQt6 Designer / UI
+*.ui.py
+*.qrc.py
+
+# tests
+.pytest_cache/
+coverage/
+htmlcov/
+.tox/
+_tech_spec/
+
+# Mac / Windows trash
+.DS_Store
+Thumbs.db
+
+# Exceptions
+# !somefile.py
