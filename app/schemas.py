@@ -1,8 +1,11 @@
-from typing import Optional, List
-from pydantic import BaseModel
 from datetime import datetime
+from typing import Optional, List
+
+from pydantic import BaseModel
+
 
 class PublicationBase(BaseModel):
+    """Base schema for a publication (shared fields)."""
     title: str
     summary: Optional[str] = None
     tags: Optional[List[str]] = []
@@ -13,13 +16,17 @@ class PublicationBase(BaseModel):
     pdf_link: str
     source: Optional[str] = None
 
+
 class PublicationCreate(PublicationBase):
+    """Schema for creating a new publication."""
     pass
 
+
 class PublicationOut(PublicationBase):
+    """Schema for returning a publication from the database."""
     id: int
     created_at: datetime
-    tags: List[str]  # важно: именно список, не Optional
+    tags: List[str]
 
     class Config:
         orm_mode = True

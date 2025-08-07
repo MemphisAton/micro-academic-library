@@ -2,6 +2,9 @@
 
 A FastAPI-based web application for downloading scientific publications from arXiv, extracting metadata using AI, storing them in SQLite, and browsing them through a simple web interface with pagination.
 
+### Main interface
+<img src="images/index.png" width="800"/>
+
 ---
 
 ## Features
@@ -10,10 +13,9 @@ A FastAPI-based web application for downloading scientific publications from arX
 - Extract metadata (title, summary, tags, language, organization, country)
 - Store and display publications in a local SQLite database
 - Pagination (5/10/20/50 per page)
-- Automatic page refresh when new data appears
 - Database statistics (number of saved publications)
 - Polling API every 10 seconds to detect updates
-- Local or OpenAI-based metadata extraction
+- OpenAI-based metadata extraction
 
 ---
 
@@ -26,10 +28,10 @@ git clone https://github.com/yourusername/micro-academic-library.git
 cd micro-academic-library
 ```
 
-2. Install dependencies:
+2. Run the installer (creates virtual environment and installs dependencies):
 
-```bash
-pip install -r requirements.txt
+```
+install.bat
 ```
 
 3. Create a `.env` file in the root of the project:
@@ -91,7 +93,7 @@ micro-academic-library/
 
 ## Dependencies
 
-- Python 3.8+
+- Python 3.12+
 - FastAPI
 - Uvicorn
 - SQLAlchemy
@@ -106,10 +108,19 @@ micro-academic-library/
 ## Notes
 
 - If OpenAI is blocked in your region, you may see error 403 `unsupported_country_region_territory`
+- If AI connection fails (e.g., no internet or bad API key), you will see an error message in the corner:
+
+  <img src="images/err_msg.png" width="400"/>
+
+- During article loading, the system shows a non-blocking message like this:
+
+  <img src="images/msg.png" width="360"/>
+
+- These popup messages automatically disappear after a few seconds and are used for both errors and progress feedback.
 
 ---
 
 
 ## Author
 
-Developed by Anton Marusin (GitHub: [yourusername](https://github.com/yourusername))
+Developed by Anton Marusin (tg: [@MemphisAton](https://t.me/MemphisAton))

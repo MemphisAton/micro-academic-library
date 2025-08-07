@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Micro Academic Library</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="header">
+    <div class="logo-title">
+        <h1>📚 Micro Academic Library</h1>
+    </div>
+    <div class="counter">
+        Total in database: <strong>{{ total_publications }}</strong>
+    </div>
+</div>
+
+<form id="arxiv-form">
+    <label for="limit">Download articles from arXiv:</label>
+    <input type="number" id="limit" name="limit" min="1" max="100" value="10">
+
+    <label for="category">Category:</label>
+    <select id="category" name="category">
+        {% for code, name in categories.items() %}
+        <option value="{{ code }}">{{ name }}</option>
+        {% endfor %}
+    </select>
+
+    <button type="submit">Download</button>
+</form>
+
+{% for pub in publications %}
+<div class="publication">
+    <h2><a href="{{ pub.pdf_link }}" target="_blank">{{ pub.title }}</a></h2>
+    <div class="meta">
+        {{ pub.year }} — {{ pub.organization or "Unknown" }} ({{ pub.country or "Unknown" }}) — {{ pub.language }}
+    </div>
+    <p>{{ pub.summary }}</p>
+    <div class="tags">
+        🔖 {{ pub.tags | join(", ") }}
+    </div>
+</div>
+{% else %}
+<p>No publications found.</p>
+{% endfor %}
+
+<div class="pagination-bar">
+    <div class="pagination">
+        <div class="pagination-left">
+            {% if page > 1 %}
+            <a href="/?page={{ page - 1 }}&per_page={{ per_page }}" class="nav-button">«</a>
+            {% else %}
+            <span class="nav-button disabled">«</span>
+            {% endif %}
+        </div>
+
+        <div class="pagination-center">
+            {% set start = 1 if page - 2 < 1 else page - 2 %}
+            {% set end = total_pages if page + 2 > total_pages else page + 2 %}
+
+            {% if start > 1 %}
+            <a href="/?page=1&per_page={{ per_page }}" class="page-num">1</a>
+            {% if start > 2 %}
+            <span class="page-num dots">...</span>
+            {% endif %}
+            {% endif %}
+
+            {% for p in range(start, end + 1) %}
+            {% if p == page %}
+            <span class="page-num active">{{ p }}</span>
+            {% else %}
+            <a href="/?page={{ p }}&per_page={{ per_page }}" class="page-num">{{ p }}</a>
+            {% endif %}
+            {% endfor %}
+
+            {% if end < total_pages %}
+            {% if end < total_pages - 1 %}
+            <span class="page-num dots">...</span>
+            {% endif %}
+            <a href="/?page={{ total_pages }}&per_page={{ per_page }}" class="page-num">{{ total_pages }}</a>
+            {% endif %}
+        </div>
+
+        <div class="pagination-right">
+            {% if page < total_pages %}
+            <a href="/?page={{ page + 1 }}&per_page={{ per_page }}" class="nav-button">»</a>
+            {% else %}
+            <span class="nav-button disabled">»</span>
+            {% endif %}
+        </div>
+    </div>
+
+    <form method="get" id="per-page-form" class="per-page-form">
+        <div class="select-wrapper">
+            <label for="per_page" class="select-label">Items per page:</label>
+            <div class="select-container">
+                <select id="per_page" name="per_page" onchange="this.form.submit()">
+                    {% for option in [1, 2, 5, 10, 20, 50] %}
+                    <option value="{{ option }}" {% if per_page == option %}selected{% endif %}>{{ option }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <input type="hidden" name="page" value="1">
+        </div>
+    </form>
+</div>
+
+<script src="/static/main.js"></script>
+</body>
+</html>

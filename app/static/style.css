@@ -1,15 +1,13 @@
 .pagination {
-
     width: 580px;
-    height: 0; /* Важно! Фиксированная высота */
+    height: 0;
     display: flex;
     justify-content: space-between;
-    align-items: center; /* Главное: это выравнивает по центру по вертикали */
+    align-items: center;
     box-sizing: border-box;
     margin-top: 2rem;
 }
 
-/* Фиксированная ширина слева и справа */
 .pagination-left,
 .pagination-right {
     width: 60px;
@@ -19,7 +17,6 @@
     height: 100%;
 }
 
-/* Общий стиль для всех .page-num */
 .page-num {
     padding: 0px 6px;
     border-radius: 6px;
@@ -32,7 +29,6 @@
     display: inline-block;
 }
 
-/* Конкретные модификаторы */
 .page-num {
     background: #f4f4f4;
     color: #333;
@@ -57,7 +53,6 @@
     cursor: default;
 }
 
-/* Prev / Next */
 .nav-button {
     padding: 4px 8px;
     border-radius: 6px;
@@ -65,10 +60,11 @@
     color: #333;
     border: 1px solid #ddd;
     text-decoration: none;
-    height: 40px;  /* высота кнопки */
-    display: flex;               /* центрирование */
+    height: 40px;
+    display: flex;
     align-items: center;
-    justify-content: center;}
+    justify-content: center;
+}
 
 .nav-button:hover {
     background: #e0e0e0;
@@ -85,7 +81,7 @@
     position: fixed;
     bottom: 0;
     left: 0;
-    height: 100px; /* ← задай нужную высоту */
+    height: 100px;
     width: 100%;
     padding: 12px 0;
     background: white;
@@ -128,17 +124,18 @@ form#arxiv-form {
 }
 
 form#arxiv-form input[type="number"],
-form#arxiv-form button {
-    padding: 6px 12px;         /* одинаковый padding */
+form#arxiv-form button,
+form#arxiv-form select {
+    padding: 6px 12px;
     border-radius: 6px;
     font-weight: bold;
-    font-size: 14px;           /* одинаковый шрифт */
-    height: 30px;              /* фиксированная одинаковая высота */
-    box-sizing: border-box;   /* важно для padding + height */
+    font-size: 14px;
+    height: 30px;
+    box-sizing: border-box;
 }
 
 form#arxiv-form input[type="number"] {
-    width: 60px;               /* или как тебе нужно */
+    width: 80px;
     border: 1px solid #ccc;
 }
 
@@ -149,11 +146,15 @@ form#arxiv-form button {
     cursor: pointer;
 }
 
+form#arxiv-form select {
+    border: 1px solid #ccc;
+    background: white;
+    cursor: pointer;
+}
 
 form#arxiv-form button:hover {
     background: #444;
 }
-
 
 .per-page-form {
     display: flex;
@@ -164,7 +165,6 @@ form#arxiv-form button:hover {
     padding-top: 1rem;
     font-size: 14px;
     color: #333;
-
 }
 
 .per-page-form label {
@@ -177,16 +177,10 @@ form#arxiv-form button:hover {
     border: 1px solid #ccc;
     background: white;
     font-size: 14px;
-    appearance: none; /* убирает системный стиль */
+    appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
     cursor: pointer;
-}
-.per-page-form {
-    display: flex;
-    justify-content: center;
-    margin-top: 1rem;
-    font-size: 14px;
 }
 
 .select-wrapper {
@@ -217,3 +211,29 @@ form#arxiv-form button:hover {
     outline: none;
 }
 
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.logo-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo {
+  width: 32px;
+  height: 32px;
+}
+
+.counter {
+  font-size: 0.95rem;
+  color: #444;
+  background: #f5f5f5;
+  padding: 6px 12px;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}

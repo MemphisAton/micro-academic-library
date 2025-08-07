@@ -1,28 +1,29 @@
+import json
+
 from fastapi import FastAPI, Request
-from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
+from fastapi.templating import Jinja2Templates
+
 from app import models
 from app.database import engine, SessionLocal
-from app.views import router as publications_router
 from app.models import Publication
-import json
+from app.views import router as publications_router
+from scripts.downloader_arxiv import fetch_arxiv_categories
 
 app = FastAPI()
 
-# Создание таблиц в БД при запуске
 models.Base.metadata.create_all(bind=engine)
 
-# Подключаем роуты API
 app.include_router(publications_router)
 
-# Подключаем шаблоны и статические файлы
 templates = Jinja2Templates(directory="app/templates")
 app.mount("/static", StaticFiles(directory="app/static"), name="static")
 
-# Главная страница с HTML
+
 @app.get("/", response_class=HTMLResponse)
 async def show_publications(request: Request, page: int = 1, per_page: int = 2):
+    """Render the main page with paginated list of publications."""
     skip = (page - 1) * per_page
 
     with SessionLocal() as db:
@@ -40,4 +41,6 @@ async def show_publications(request: Request, page: int = 1, per_page: int = 2):
         "page": page,
         "per_page": per_page,
         "total_pages": total_pages,
+        "total_publications": total,
+        "categories": fetch_arxiv_categories()
     })
