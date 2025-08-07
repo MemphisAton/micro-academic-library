@@ -24,7 +24,7 @@ A FastAPI-based web application for downloading scientific publications from arX
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/micro-academic-library.git
+git clone https://github.com/MemphisAton/micro-academic-library.git
 cd micro-academic-library
 ```
 
